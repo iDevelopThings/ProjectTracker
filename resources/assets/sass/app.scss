@@ -1,0 +1,38 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// Variables
+@import "variables";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.card {
+  border: none;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.time-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.time-list > li {
+  text-indent: -5px;
+}
+
+.time-list > li:before {
+  content: "-";
+  font-weight: 700;
+  margin-right: 10px;
+}
+
