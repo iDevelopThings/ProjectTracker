@@ -44,6 +44,10 @@ class ProjectController extends Controller
 
     public function view(Project $project)
     {
+        if (auth()->id() !== $project->user_id) {
+            abort(404);
+        }
+
         $hoursThisMonth = "0";
         $hoursThisWeek  = "0";
         $totalHours     = "0";

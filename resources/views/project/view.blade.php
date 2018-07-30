@@ -124,7 +124,9 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <h1 class="mb-0">
-                            {{$project->title}}
+                            {{$project->title}} <strong>/</strong>
+                            <small class="text-muted">{{$project->uid}}</small>
+
                         </h1>
                         <hr>
                         <ul class="list-inline mb-0">
