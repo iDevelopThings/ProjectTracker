@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
         Route::post('', 'ProjectController@create')->name('create');
         Route::get('{project}', 'ProjectController@view')->name('view');
         Route::post('{project}/times', 'TimeEntryController@create')->name('add-entry');
+        Route::post('{project}/times/{time}/edit', 'TimeEntryController@edit')->name('edit-entry');
     });
 
 });

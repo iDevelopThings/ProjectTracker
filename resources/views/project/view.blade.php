@@ -195,6 +195,137 @@
                                                 <strong>Total Length: </strong>{{$time->timeFormatted()}} <br>
                                             </small>
                                         @endif
+                                        <hr>
+                                        <button class="btn btn-primary btn-xs"
+                                                data-toggle="modal"
+                                                data-target="#editTime{{$time->id}}">
+                                            Edit
+                                        </button>
+
+
+                                        <div class="modal fade"
+                                             id="editTime{{$time->id}}"
+                                             tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="editTime{{$time->id}}Label"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editTime{{$time->id}}Label">Edit
+                                                                                                                time
+                                                                                                                entry</h5>
+                                                        <button type="button"
+                                                                class="close"
+                                                                data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="{{route('project.edit-entry', [$project, $time])}}"
+                                                          method="post">
+                                                        @csrf
+
+
+                                                        <div class="modal-body">
+
+                                                            <div class="form-group">
+                                                                <label for="date" class="text-md-right">
+                                                                    Date
+                                                                </label>
+
+                                                                <input id="date"
+                                                                       type="date"
+                                                                       class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}"
+                                                                       name="date"
+                                                                       value="{{ old('date') ?? $time->date }}"
+                                                                       required>
+
+                                                                @if ($errors->has('date'))
+                                                                    <div class="invalid-feedback">
+                                                                        <strong>{{ $errors->first('date') }}</strong>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="start_time"
+                                                                               class="text-md-right">
+                                                                            Start Time
+                                                                        </label>
+
+                                                                        <input id="start_time"
+                                                                               type="time"
+                                                                               class="form-control{{ $errors->has('start_time') ? ' is-invalid' : '' }}"
+                                                                               name="start_time"
+                                                                               value="{{ old('start_time') ?? $time->start_time }}"
+                                                                               required>
+
+                                                                        @if ($errors->has('start_time'))
+                                                                            <div class="invalid-feedback">
+                                                                                <strong>{{ $errors->first('start_time') }}</strong>
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="finish_time"
+                                                                               class="text-md-right">
+                                                                            Finish Time
+                                                                        </label>
+
+                                                                        <input id="finish_time"
+                                                                               type="time"
+                                                                               class="form-control{{ $errors->has('finish_time') ? ' is-invalid' : '' }}"
+                                                                               name="finish_time"
+                                                                               value="{{ old('finish_time')  ?? $time->finish_time}}"
+                                                                               required>
+
+                                                                        @if ($errors->has('finish_time'))
+                                                                            <div class="invalid-feedback">
+                                                                                <strong>{{ $errors->first('finish_time') }}</strong>
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="content"
+                                                                       class="text-md-right">
+                                                                    Content
+                                                                </label>
+
+                                                                <textarea id="content"
+                                                                          type="content"
+                                                                          class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
+                                                                          name="content"
+                                                                          required>{{ old('content') ?? $time->content }}</textarea>
+
+                                                                @if ($errors->has('content'))
+                                                                    <div class="invalid-feedback">
+                                                                        <strong>{{ $errors->first('content') }}</strong>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button"
+                                                                    class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                            <button type="submit" class="btn btn-primary">Save changes
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </td>
                                     <td>
                                         <p>
