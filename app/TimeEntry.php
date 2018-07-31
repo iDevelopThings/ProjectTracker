@@ -2,10 +2,16 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class TimeEntry extends Model
 {
+    public function date()
+    {
+        return Carbon::parse($this->date);
+    }
+
     public function timeFormatted()
     {
         $t      = round($this->length_in_seconds);

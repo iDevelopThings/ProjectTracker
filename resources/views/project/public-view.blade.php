@@ -80,8 +80,34 @@
 
                 @if($times->first())
                     @foreach($times as $time)
+                        @php
+                            $date = $time->date();
 
-                        <div class="card mb-3">
+                            $lastTime = $date->month;
+
+                            if($times->count() > 1) {
+                                $lastTime = $times[$loop->first ? $loop->index+1 : $loop->index-1]->date();
+
+                                //var_dump( $lastTime->month, $date->month);
+                            }
+                        @endphp
+
+                        @if($time->date() == $date->startOfWeek())
+
+                            <div class="strike">
+                                <span>Week {{$date->weekNumberInMonth}} - {{$date->format('M')}}</span>
+                            </div>
+
+                        @endif
+
+
+                        @if($time->date() == $date->startOfMonth() || (($lastTime->month !== $time->date()->month) ?? false))
+                            <div class="strike">
+                                <span>Start of {{$date->format('M')}}</span>
+                            </div>
+                        @endif
+
+                        <div class="card mb-3 mt-5">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-2 border-right">
