@@ -26,8 +26,12 @@ class ProjectController extends Controller
         $avgHours       = "0";
 
         dd(
-            date_create('now', new DateTimeZone('Europe/London')),
-            date_create('last month', new DateTimeZone('Europe/London'))
+            'this month',
+            now()->startOfMonth(),
+            now()->endOfMonth(),
+            'last month',
+            now()->subMonth(1)->startOfMonth(),
+            now()->subMonth(1)->endOfMonth()
         );
         if ($project->times()->first()) {
             $hoursThisMonth = $project->hoursBetween(
