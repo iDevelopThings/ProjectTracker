@@ -50,7 +50,7 @@ class ProjectController extends Controller
 
         return view('project.public-view', [
             'project'        => $project,
-            'times'          => $project->times()->orderBy('date', 'desc')->paginate(30),
+            'times'          => $project->times()->orderBy('date', 'desc')->get(),
             'hoursThisMonth' => $hoursThisMonth,
             'hoursLastMonth' => $hoursLastMonth,
             'hoursThisWeek'  => $hoursThisWeek,
