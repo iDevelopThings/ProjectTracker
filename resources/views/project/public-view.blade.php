@@ -99,9 +99,7 @@
                 @if($time->date() == $date->startOfMonth() || (($lastTime->month > $time->date()->month) ?? false))
                     @php $isNewMonth = true; @endphp
                     <div class="new-month">
-                        <img src="/img/fireworks.svg"
-                             alt=""
-                             class="img-responsive">
+                        <img src="/img/fireworks.svg" alt="" class="img-responsive">
                         <h1 class="mb-0 mt-5">Start of {{$time->date()->addMonth(1)->format('M') }}</h1>
                     </div>
                 @endif
