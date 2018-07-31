@@ -36,36 +36,15 @@
   margin-right: 10px;
 }
 
-strike {
-  display: block;
-  text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.strike > span {
+.new-month {
   position: relative;
-  display: inline-block;
-  font-size: 22px;
-  color: rgba(0, 0, 0, 0.3);
-}
 
-.strike > span:before,
-.strike > span:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 9999px;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.strike > span:before {
-  right: 100%;
-  margin-right: 15px;
-}
-
-.strike > span:after {
-  left: 100%;
-  margin-left: 15px;
+  > img {
+    position: absolute;
+    right: 0;
+    height: 200px;
+    transform: rotate(35deg);
+    float: right;
+    top: -70px;
+  }
 }
