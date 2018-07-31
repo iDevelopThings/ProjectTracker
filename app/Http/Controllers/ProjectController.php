@@ -24,27 +24,24 @@ class ProjectController extends Controller
         $hoursThisWeek  = "0";
         $totalHours     = "0";
         $avgHours       = "0";
+        $hoursLastWeek  = "0";
 
-        dd(
-            'this month',
-            now()->startOfMonth(),
-            now()->endOfMonth(),
-            'last month',
-            now()->subMonth(1)->startOfMonth(),
-            now()->subMonth(1)->endOfMonth()
-        );
         if ($project->times()->first()) {
             $hoursThisMonth = $project->hoursBetween(
                 now()->startOfMonth(),
                 now()->endOfMonth()
             );
             $hoursLastMonth = $project->hoursBetween(
-                now()->subMonth(1)->startOfMonth(),
-                now()->subMonth(1)->endOfMonth()
+                Carbon::parse(now()->startOfMonth())->subMonth()->startOfMonth(),
+                Carbon::parse(now()->startOfMonth())->subMonth()->endOfMonth()
             );
             $hoursThisWeek  = $project->hoursBetween(
                 now()->startOfWeek(),
                 now()->endOfWeek()
+            );
+            $hoursLastWeek  = $project->hoursBetween(
+                now()->subWeek()->startOfWeek(),
+                now()->subWeek()->endOfWeek()
             );
             $totalHours     = $project->totalHours();
             $avgHours       = $project->avgHours();
@@ -57,6 +54,7 @@ class ProjectController extends Controller
             'hoursThisMonth' => $hoursThisMonth,
             'hoursLastMonth' => $hoursLastMonth,
             'hoursThisWeek'  => $hoursThisWeek,
+            'hoursLastWeek'  => $hoursLastWeek,
             'totalHours'     => $totalHours,
             'avgHours'       => $avgHours,
         ]);
@@ -69,18 +67,28 @@ class ProjectController extends Controller
         }
 
         $hoursThisMonth = "0";
+        $hoursLastMonth = "0";
         $hoursThisWeek  = "0";
         $totalHours     = "0";
         $avgHours       = "0";
+        $hoursLastWeek  = "0";
 
         if ($project->times()->first()) {
             $hoursThisMonth = $project->hoursBetween(
                 now()->startOfMonth(),
                 now()->endOfMonth()
             );
+            $hoursLastMonth = $project->hoursBetween(
+                Carbon::parse(now()->startOfMonth())->subMonth()->startOfMonth(),
+                Carbon::parse(now()->startOfMonth())->subMonth()->endOfMonth()
+            );
             $hoursThisWeek  = $project->hoursBetween(
                 now()->startOfWeek(),
                 now()->endOfWeek()
+            );
+            $hoursLastWeek  = $project->hoursBetween(
+                now()->subWeek()->startOfWeek(),
+                now()->subWeek()->endOfWeek()
             );
             $totalHours     = $project->totalHours();
             $avgHours       = $project->avgHours();
@@ -91,7 +99,9 @@ class ProjectController extends Controller
             'project'        => $project,
             'times'          => $project->times()->orderBy('date', 'desc')->paginate(30),
             'hoursThisMonth' => $hoursThisMonth,
+            'hoursLastMonth' => $hoursLastMonth,
             'hoursThisWeek'  => $hoursThisWeek,
+            'hoursLastWeek'  => $hoursLastWeek,
             'totalHours'     => $totalHours,
             'avgHours'       => $avgHours,
         ]);

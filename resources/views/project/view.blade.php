@@ -142,7 +142,7 @@
                 @if($times->first())
 
                     <div class="row mb-4">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <h4 class="mb-2">{{$hoursThisMonth}}</h4>
@@ -150,7 +150,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="mb-2">{{$hoursLastMonth}}</h4>
+                                    <h6 class="mb-0 text-muted">Last Month</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <h4 class="mb-2">{{$hoursThisWeek}}</h4>
@@ -158,19 +168,33 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                    </div>
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="mb-2">{{$hoursLastWeek}}</h4>
+                                    <h6 class="mb-0 text-muted">Last Week</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="mb-2">{{$avgHours}}</h4>
+                                    <h6 class="mb-0 text-muted">Avg Hours Per Day</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <h4 class="mb-2">{{$totalHours}}</h4>
                                     <h6 class="mb-0 text-muted">Total</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <h4 class="mb-2">{{$avgHours}}</h4>
-                                    <h6 class="mb-0 text-muted">Avg Hours</h6>
                                 </div>
                             </div>
                         </div>
