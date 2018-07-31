@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use Carbon\Carbon;
+use function date_create;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use function str_random;
 
@@ -17,14 +20,23 @@ class ProjectController extends Controller
         }
 
         $hoursThisMonth = "0";
+        $hoursLastMonth = "0";
         $hoursThisWeek  = "0";
         $totalHours     = "0";
         $avgHours       = "0";
 
+        dd(
+            date_create('now', new DateTimeZone('Europe/London')),
+            date_create('last month', new DateTimeZone('Europe/London'))
+        );
         if ($project->times()->first()) {
             $hoursThisMonth = $project->hoursBetween(
                 now()->startOfMonth(),
                 now()->endOfMonth()
+            );
+            $hoursLastMonth = $project->hoursBetween(
+                now()->subMonth(1)->startOfMonth(),
+                now()->subMonth(1)->endOfMonth()
             );
             $hoursThisWeek  = $project->hoursBetween(
                 now()->startOfWeek(),
@@ -39,6 +51,7 @@ class ProjectController extends Controller
             'project'        => $project,
             'times'          => $project->times()->orderBy('date', 'desc')->paginate(30),
             'hoursThisMonth' => $hoursThisMonth,
+            'hoursLastMonth' => $hoursLastMonth,
             'hoursThisWeek'  => $hoursThisWeek,
             'totalHours'     => $totalHours,
             'avgHours'       => $avgHours,

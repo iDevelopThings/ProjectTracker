@@ -22,6 +22,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="mb-2">{{$hoursLastMonth}}</h4>
+                                    <h6 class="mb-0 text-muted">Last Month</h6>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body text-center">
@@ -30,6 +40,19 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="mb-2">{{$avgHours}}</h4>
+                                    <h6 class="mb-0 text-muted">Avg Hours Per Day</h6>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body text-center">
@@ -39,7 +62,6 @@
                             </div>
                         </div>
                     </div>
-
                 @endif
 
                 <h3 class="mb-3">
