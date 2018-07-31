@@ -51,6 +51,7 @@ class ProjectController extends Controller
         $hoursThisMonth = "0";
         $hoursThisWeek  = "0";
         $totalHours     = "0";
+        $avgHours       = "0";
 
         if ($project->times()->first()) {
             $hoursThisMonth = $project->hoursBetween(
@@ -62,6 +63,7 @@ class ProjectController extends Controller
                 now()->endOfWeek()
             );
             $totalHours     = $project->totalHours();
+            $avgHours       = $project->avgHours();
 
         }
 
@@ -71,6 +73,7 @@ class ProjectController extends Controller
             'hoursThisMonth' => $hoursThisMonth,
             'hoursThisWeek'  => $hoursThisWeek,
             'totalHours'     => $totalHours,
+            'avgHours'       => $avgHours,
         ]);
     }
 

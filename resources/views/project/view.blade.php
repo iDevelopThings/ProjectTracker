@@ -166,6 +166,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="mb-2">{{$avgHours}}</h4>
+                                    <h6 class="mb-0 text-muted">Avg Hours</h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 @endif

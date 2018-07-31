@@ -43,4 +43,13 @@ class Project extends Model
         return sprintf('%02d Hours %02d Minutes', ($t / 3600), ($t / 60 % 60));
     }
 
+    public function avgHours()
+    {
+        $seconds = $this->times()->avg('length_in_seconds');
+
+        $t = round($seconds);
+
+        return sprintf('%02d Hours %02d Minutes', ($t / 3600), ($t / 60 % 60));
+    }
+
 }
